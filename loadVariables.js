@@ -1,5 +1,5 @@
       //Icon URLs
-      var commercialIcon = "https://doc-0o-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/b2fhpn07b1i51cluo484ok1qeui808to/1562126400000/04007978502801228319/*/1I3-CKk69UywBwJEcTvVPbT7Wosr3GLXi";
+      var commercialIcon = "https://raw.githubusercontent.com/outendesigns/firma/master/commercial.png";
       var hospitalityIcon = "https://doc-14-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/59n6bh66g87lh184dphf5qh478tdtoba/1562126400000/04007978502801228319/*/1VMmUuRIN_tvzxYqkFDfPcp25056VwDcC";
       var institutionalIcon = "https://doc-0s-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/bf34vd64hlaskki3ngo8anhk0f6rh8o1/1562126400000/04007978502801228319/*/101ZjRIouJwp2XTacT_HSzbUINgcXScGW";
       var multiFamilyIcon = "https://doc-0g-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/1mcl0hhaq2r12jsk7j5rmtq6v14n9k8n/1562126400000/04007978502801228319/*/1bge4YT3aVtK5nAJv27s-MYhdDtBEiHdm";
