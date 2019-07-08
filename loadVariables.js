@@ -1,16 +1,22 @@
-      //Icon URLs
+      //loadVariables//
+      //firma project//
+      //version 1.2//
+
+      /////////////
+      //Icon URLs//
+      /////////////
       var commercialIcon = "https://raw.githubusercontent.com/outendesigns/firma/master/commercial.png";
-      var hospitalityIcon = "https://doc-14-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/59n6bh66g87lh184dphf5qh478tdtoba/1562126400000/04007978502801228319/*/1VMmUuRIN_tvzxYqkFDfPcp25056VwDcC";
-      var institutionalIcon = "https://doc-0s-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/bf34vd64hlaskki3ngo8anhk0f6rh8o1/1562126400000/04007978502801228319/*/101ZjRIouJwp2XTacT_HSzbUINgcXScGW";
-      var multiFamilyIcon = "https://doc-0g-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/1mcl0hhaq2r12jsk7j5rmtq6v14n9k8n/1562126400000/04007978502801228319/*/1bge4YT3aVtK5nAJv27s-MYhdDtBEiHdm";
-      var otherIcon = "https://doc-08-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/ae5mikfp8hhjk3me2gp90qdk5tcucpj0/1562126400000/04007978502801228319/*/1XSmVSnFHozGrkLzdeB5E5v6WlRRcWtHF";
-      var parksIcon = "https://doc-10-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/g4bhg3a8i9a8qp3egih4bo4hgi51cerh/1562126400000/04007978502801228319/*/1Wkr4rFuAyzUKcWqLcN9hrx2nsN7YgkAM";
-      var residentialIcon = "https://doc-00-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/2o0p00u25bshjtqft544ql0v90cuqrtu/1562126400000/04007978502801228319/*/1ncz6qFIeAxVcUmaSCF-LHMujEOTwx3Ip";
-      var restorationIcon = "https://doc-00-a4-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/3e7vjsr4kkno64mjk5k13klgvjb4vi48/1562126400000/04007978502801228319/*/1VxTMMn8K9OT0T2i1gKPRa7FRJZKNHreV";
+      var hospitalityIcon = "https://raw.githubusercontent.com/outendesigns/firma/master/hospitality-wineries.png";
+      var institutionalIcon = "https://raw.githubusercontent.com/outendesigns/firma/master/institutional.png";
+      var multiFamilyIcon = "https://raw.githubusercontent.com/outendesigns/firma/master/multi-family-housing.png";
+      var otherIcon = "https://raw.githubusercontent.com/outendesigns/firma/master/other.png";
+      var parksIcon = "https://raw.githubusercontent.com/outendesigns/firma/master/parks.png";
+      var residentialIcon = "https://raw.githubusercontent.com/outendesigns/firma/master/residential.png";
+      var restorationIcon = "https://raw.githubusercontent.com/outendesigns/firma/master/restoration.png";
       
-      
-      //Location Database
-      
+      /////////////////////
+      //Location Database//
+      /////////////////////
       var locationArray = new Array();
       //Commercial Properties//
       var push = {type:"commercial", name:"Icon Building, San Luis Obispo, CA", lat:35.2911468, lng:-120.6618753, icon:commercialIcon};
