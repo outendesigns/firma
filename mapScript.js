@@ -1,0 +1,202 @@
+////////////////////////////
+//     mapScript.js       //
+//     firma project      //
+//      version 1.24      //
+// Designed by Eric Outen //
+//     copyright 2019     //
+////////////////////////////
+
+var mapStyle = [{
+  'stylers': [{'visibility': 'off'}]
+}, {
+  'featureType': 'landscape',
+  'elementType': 'geometry',
+  'stylers': [{'visibility': 'on'}, {'color': '#fafafa'}]
+}, {
+  'featureType': 'water',
+  'elementType': 'geometry',
+  'stylers': [{'visibility': 'on'}, {'color': '#d4ebf2'}]
+}];
+
+var map;
+var markerArray = new Array();
+var infowindow;
+var contentString;
+
+////////////////////////////////
+// Initialize and add the map //
+////////////////////////////////
+function initMap() {
+  // The location of San Luis Obispo
+  var slo = {lat: 35.280096, lng: -120.6609255};
+  // The map, centered at San Luis Obispo
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: slo,
+    zoom: 8,
+    styles: mapStyle
+  });
+
+  map.setMapTypeId('terrain');
+
+  //Initiate Map Legend Position
+  var legend = document.getElementById('legend');
+  map.controls[google.maps.ControlPosition.LEFT_TOP].push(legend);
+
+  //For Loop Map Markers
+  var markerLatLng = {lat:0, lng:0};
+  for (i=0; i<locationArray.length; i++){
+    markerLatLng = {lat:locationArray[i].lat, lng:locationArray[i].lng};
+    markerArray[i] = new google.maps.Marker({position: markerLatLng, icon:locationArray[i].icon, map: map});
+  }
+
+  //Initialize content of infowindow
+  contentString = "Error: Content cannot be loaded";
+  
+  //Create infowindow with default content
+  infowindow = new google.maps.InfoWindow({
+    content:contentString
+  });
+
+  //Create loop to click on markers and pop up infowindow with dynamically loaded content (Also center and zoom on the marker)
+  markerArray.forEach(function(marker, i){
+    //console.log(i);
+    marker.addListener('click', function(){
+      var centerLatLng = {lat: locationArray[i].lat, lng: locationArray[i].lng};
+      var newContent = "<p>"+locationArray[i].name+"<br>"+locationArray[i].city+"</p>"
+      map.setZoom(11);
+      map.panTo(centerLatLng);
+      infowindow.setContent(newContent);
+      infowindow.open(map,marker);
+    });
+  });
+
+  // Adjust map styles
+  map.data.setStyle({
+    fillColor: 'white',
+    strokeWeight: 5,
+    strokeColor: '#1d1e60'
+  });
+
+  //state polygons only need to be loaded once, do them now
+  loadMapShapes();
+
+//End initmap function        
+}
+
+function centerOnClick(lt,lg,id){
+  document.getElementById("map").scrollIntoView();
+  var centerLatLng = {lat: lt, lng: lg};
+  var newContent = "<p>"+locationArray[id].name+"<br>"+locationArray[id].city+"</p>"
+  map.setZoom(10);
+  map.panTo(centerLatLng);
+  infowindow.setContent(newContent);
+  infowindow.open(map, markerArray[id]);
+}
+
+/** Loads the state boundary polygons from a GeoJSON source. */
+function loadMapShapes() {
+  // load US state outline polygons from a GeoJson file
+  map.data.loadGeoJson('https://storage.googleapis.com/mapsdevsite/json/states.js', { idPropertyName: 'STATE' });
+
+  // wait for the request to complete by listening for the first feature to be added
+  google.maps.event.addListenerOnce(map.data, 'addfeature', function() {
+    google.maps.event.trigger(document.getElementById('census-variable'),
+      'change');
+  });
+}
+
+//Change display of Legend item on click
+var lgndItems = document.getElementsByClassName("legendCategory");
+for (var i = 0; i < lgndItems.length; i++) {
+  lgndItems[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+//Show Hide Markers
+function showHideMarkers(type, id){
+  markerArray.forEach(function(marker,i){
+    if (locationArray[i].type != type){
+      markerArray[i].setVisible(false);
+    } else {
+      markerArray[i].setVisible(true);
+    }
+  });
+  var slo = {lat: 35.280096, lng: -120.6609255};
+  map.panTo(slo);
+  map.setZoom(8);
+  infowindow.close();
+};
+
+//Show All Markers
+function showAllMarkers(){
+  markerArray.forEach(function(marker){
+    marker.setVisible(true);
+  });
+  var slo = {lat: 35.280096, lng: -120.6609255};
+  map.panTo(slo);
+  map.setZoom(8);
+  infowindow.close();
+}
+
+//Variables and dynamically load the project list//
+var commercialList = document.getElementById("commercialList");
+var multiFamilyList = document.getElementById("multiFamilyList");
+var residentialList = document.getElementById("residentialList");
+var hospitalityList = document.getElementById("hospitalityList");
+var parksList = document.getElementById("parksList");
+var restorationList = document.getElementById("restorationList");
+var institutionalList = document.getElementById("institutionalList");
+var otherList = document.getElementById("otherList");
+
+for (i=0; i<locationArray.length; i++){
+  if (locationArray[i].type == "commercial"){
+    var li = document.createElement("li");
+    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    commercialList.appendChild(li);
+  }
+
+  if (locationArray[i].type == "multiFamily"){
+    var li = document.createElement("li");
+    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    multiFamilyList.appendChild(li);
+  }
+
+  if (locationArray[i].type == "residential"){
+    var li = document.createElement("li");
+    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    residentialList.appendChild(li);
+  }
+
+  if (locationArray[i].type == "hospitality"){
+    var li = document.createElement("li");
+    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    hospitalityList.appendChild(li);
+  }
+
+  if (locationArray[i].type == "parks"){
+    var li = document.createElement("li");
+    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    parksList.appendChild(li);
+  }
+
+  if (locationArray[i].type == "restoration"){
+    var li = document.createElement("li");
+    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    restorationList.appendChild(li);
+  }
+
+  if (locationArray[i].type == "institutional"){
+    var li = document.createElement("li");
+    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    institutionalList.appendChild(li);
+  }
+
+  if (locationArray[i].type == "other"){
+    var li = document.createElement("li");
+    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    otherList.appendChild(li);
+  }
+}
