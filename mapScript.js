@@ -154,49 +154,49 @@ var otherList = document.getElementById("otherList");
 for (i=0; i<locationArray.length; i++){
   if (locationArray[i].type == "commercial"){
     var li = document.createElement("li");
-    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    li.innerHTML = "<p class='projListLi' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
     commercialList.appendChild(li);
   }
 
   if (locationArray[i].type == "multiFamily"){
     var li = document.createElement("li");
-    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    li.innerHTML = "<p class='projListLi' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
     multiFamilyList.appendChild(li);
   }
 
   if (locationArray[i].type == "residential"){
     var li = document.createElement("li");
-    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    li.innerHTML = "<p class='projListLi' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
     residentialList.appendChild(li);
   }
 
   if (locationArray[i].type == "hospitality"){
     var li = document.createElement("li");
-    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    li.innerHTML = "<p class='projListLi' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
     hospitalityList.appendChild(li);
   }
 
   if (locationArray[i].type == "parks"){
     var li = document.createElement("li");
-    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    li.innerHTML = "<p class='projListLi' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
     parksList.appendChild(li);
   }
 
   if (locationArray[i].type == "restoration"){
     var li = document.createElement("li");
-    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    li.innerHTML = "<p class='projListLi' color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
     restorationList.appendChild(li);
   }
 
   if (locationArray[i].type == "institutional"){
     var li = document.createElement("li");
-    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    li.innerHTML = "<p class='projListLi' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
     institutionalList.appendChild(li);
   }
 
   if (locationArray[i].type == "other"){
     var li = document.createElement("li");
-    li.innerHTML = "<p style='cursor:pointer; width:100%; font-size:18px; padding:10px 0px; margin:5px 0px; background-color:#fefefe; color:#1d1e60;' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
+    li.innerHTML = "<p class='projListLi' onclick='centerOnClick("+locationArray[i].lat+","+locationArray[i].lng+","+i+")'>"+locationArray[i].name+"</p>";
     otherList.appendChild(li);
   }
 }
